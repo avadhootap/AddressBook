@@ -2,6 +2,7 @@
 using AddressBook.Modules;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Runtime.InteropServices;
 
 namespace AddressBook.Controllers
 {
@@ -10,26 +11,18 @@ namespace AddressBook.Controllers
     public class PhoneNoController : ControllerBase
     {
         [HttpGet]
-        public IActionResult GetAllPhoneNos(string id)
+        public IActionResult GetAllPhoneNos([Optional] string id)
         {
             PhoneHelper phoneHelper = new PhoneHelper();
             
-            return Ok(phoneHelper.GetDynamic(id));
+            return Ok(phoneHelper.GetAllPhoneNos(id));
         }
-
-        //[HttpGet("GetPhoneNoFromPersonId")]
-        //public IActionResult GetPhoneNosByPersonId(string id)
-        //{
-        //    PhoneHelper phoneHelper = new PhoneHelper();
-        //   return  Ok(phoneHelper.GetPhoneNoByPersonId(id));
-
-        //}
 
         [HttpPost]
         public IActionResult AddPhoneNo(PhoneNo phoneNo)
         {
             PhoneHelper phoneHelper = new PhoneHelper();
-            phoneHelper.AddPhoneNosByDictionary(phoneNo);
+            phoneHelper.AddPhone(phoneNo);
             return Ok();
         }
 
@@ -48,6 +41,14 @@ namespace AddressBook.Controllers
             phoneHelper.DeletePhoneNo(id);
             return Ok();
         }
+
+        //[HttpGet("GetPhoneNoFromPersonId")]
+        //public IActionResult GetPhoneNosByPersonId(string id)
+        //{
+        //    PhoneHelper phoneHelper = new PhoneHelper();
+        //   return  Ok(phoneHelper.GetPhoneNoByPersonId(id));
+
+        //}
 
 
     }

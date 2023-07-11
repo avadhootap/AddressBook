@@ -933,11 +933,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Avadhoot\\Desktop\\Training\\Traning\\AddressBook\\AddressBook.csproj",
+      "projectUniqueName": "C:\\Users\\Avadhoot\\Desktop\\Training\\AccessTraining\\AddressBook\\AddressBook\\AddressBook.csproj",
       "projectName": "AddressBook",
-      "projectPath": "C:\\Users\\Avadhoot\\Desktop\\Training\\Traning\\AddressBook\\AddressBook.csproj",
+      "projectPath": "C:\\Users\\Avadhoot\\Desktop\\Training\\AccessTraining\\AddressBook\\AddressBook\\AddressBook.csproj",
       "packagesPath": "C:\\Users\\Avadhoot\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Avadhoot\\Desktop\\Training\\Traning\\AddressBook\\obj\\",
+      "outputPath": "C:\\Users\\Avadhoot\\Desktop\\Training\\AccessTraining\\AddressBook\\AddressBook\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Avadhoot\\AppData\\Roaming\\NuGet\\NuGet.Config",

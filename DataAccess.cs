@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components;
 using System.Data;
 using System.Data.SqlClient;
 using System.Reflection;
+using System.Runtime.InteropServices;
 
 namespace AddressBook
 {
@@ -11,7 +12,7 @@ namespace AddressBook
         //name of server to connect,name of database,and Authentication type. 
         string connectionstring = "data source=localHost; database=AddressBook; integrated security=True";
 
-        public DataTable Get(string query)
+        public DataTable Get(string query, string personId=null)
         {
             
            //Makes Connection with data base
@@ -21,13 +22,30 @@ namespace AddressBook
             // executes commands
             SqlCommand cmd = new SqlCommand(query, connection);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            //use to store row and column in raw forms frrom database
-            DataTable dt = new DataTable();
-            //fills data into data adpter
-            adapter.Fill(dt);
-            //closes connection with database
-            connection.Close();
-            return dt;
+            Console.WriteLine("PersonId : "+personId);
+            if (personId != null)
+            {
+               
+                cmd.Parameters.AddWithValue("@personId", personId);
+                //use to store row and column in raw forms frrom database
+                DataTable dt = new DataTable();
+                //fills data into data adpter
+                adapter.Fill(dt);
+                //closes connection with database
+                connection.Close();
+                return dt;
+            }
+            else
+            {
+              
+                DataTable dt = new DataTable();
+                //fills data into data adpter
+                adapter.Fill(dt);
+                //closes connection with database
+                connection.Close();
+                return dt;
+            }
+            
 
         }
 

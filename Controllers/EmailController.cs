@@ -2,6 +2,7 @@
 using AddressBook.Modules;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Runtime.InteropServices;
 
 namespace AddressBook.Controllers
 {
@@ -10,25 +11,18 @@ namespace AddressBook.Controllers
     public class EmailController : ControllerBase
     {
         [HttpGet]
-        public IActionResult GetAllEmail(string id)
+        public IActionResult GetAllEmail([Optional]string id)
         {
             EmailHelper helper=new EmailHelper();
-            return Ok(helper.GetDyanamic(id));
+            return Ok(helper.GetAllEmails(id));
         }
 
-        //[HttpGet("GetEmailByPersonId")]
-        //public IActionResult GetEmailByPersonId(string id)
-        //{
-        //    EmailHelper helper = new EmailHelper();
-            
-        //    return Ok(helper.GetEmailAddressesByPersonId(id));
-        //}
 
         [HttpPost]
         public IActionResult AddEmail(EmailAddress emailAddress)
         {
             EmailHelper helper = new EmailHelper();
-            helper.AddEmailsByDictionary(emailAddress);
+            helper.AddEmail(emailAddress);
             return Ok();
         }
 
@@ -47,5 +41,13 @@ namespace AddressBook.Controllers
             return Ok();
 
         }
+
+        //[HttpGet("GetEmailByPersonId")]
+        //public IActionResult GetEmailByPersonId(string id)
+        //{
+        //    EmailHelper helper = new EmailHelper();
+
+        //    return Ok(helper.GetEmailAddressesByPersonId(id));
+        //}
     }
 }
